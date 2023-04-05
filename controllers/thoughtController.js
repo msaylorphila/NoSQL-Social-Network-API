@@ -20,7 +20,6 @@ module.exports = {
   // create a new user
   createThought(req, res) {
     Thought.create(req.body)
-      // { $push: { <field1>: { <modifier1>: <value1>, ... }, ... } }
       .then((thought) => {
         return User.findOneAndUpdate(
           { _id: req.body.userId },
