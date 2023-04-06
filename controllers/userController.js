@@ -86,4 +86,3 @@ module.exports = {
 };
 
 
-//////add update and delete and figure out friendlist
