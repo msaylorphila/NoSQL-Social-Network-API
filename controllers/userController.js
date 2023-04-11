@@ -2,11 +2,13 @@ const User = require('../models/User');
 const Thought = require('../models/Thought')
 
 module.exports = {
+    ///get all users
     getUsers(req, res) {
         User.find()
         .then((users) => res.json(users))
         .catch((err) => res.status(500).json(err));
     },
+    //get one user by id
     getSingleUser(req, res) {
         User.findOne({ _id: req.params.userId })
         .select('-__v')
@@ -25,6 +27,7 @@ module.exports = {
         .then((dbUserData) => res.json(dbUserData))
         .catch((err) => res.status(500).json(err));
     },
+    //update a user by id
     updateUser(req, res) {
         User.findOneAndUpdate(
             { _id: req.params.userId },
@@ -42,6 +45,7 @@ module.exports = {
         })
         
     },
+    //delete user by id
     deleteUser(req, res) {
         User.findOneAndRemove({_id: req.params.userId})
         .then((user) => {
@@ -57,6 +61,7 @@ module.exports = {
             console.log(err)
         })
     },
+    // add new friend using a user id and the id of the friend you want to add
     addNewFriend(req, res){
         User.findOneAndUpdate(
             { _id: req.params.userId },
@@ -73,6 +78,7 @@ module.exports = {
             console.log(err)
         })
     },
+    // delete that friend using the friend id and the user id
     deleteNewFriend(req, res){
         User.findOneAndUpdate( 
             { _id: req.params.userId},

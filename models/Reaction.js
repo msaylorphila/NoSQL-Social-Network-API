@@ -14,6 +14,7 @@ const reactionSchema = new Schema ({
         type: String,
         required: true
     },
+    //// helper added to format timestamp
     createdAt: {
         type: Date,
         default: Date.now,
